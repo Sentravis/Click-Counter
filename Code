@@ -1,0 +1,79 @@
+using System;
+using Gtk;
+using Mod9_HW;
+
+public partial class MainWindow : Gtk.Window
+{
+    
+    int b1_click = 0;
+    int b2_click = 0;
+    int b3_click = 0;
+
+    public MainWindow() : base(Gtk.WindowType.Toplevel)
+    {
+        Build();
+    }
+
+    protected void OnDeleteEvent(object sender, DeleteEventArgs a)
+    {
+        Application.Quit();
+        a.RetVal = true;
+    }
+
+    protected void B1_Clicked(object sender, EventArgs e)
+    {
+
+        b1_click++;
+    }
+
+    protected void B2_Clicked(object sender, EventArgs e)
+    {
+        b2_click++;
+    }
+
+    protected void B3_Clicked(object sender, EventArgs e)
+    {
+        b3_click++;
+    }
+
+    protected void MostClicks(object sender, EventArgs e)
+    {
+        this.label1.Text = $"{b1_click}";
+        this.label2.Text = $"{b2_click}";
+        this.label3.Text = $"{b3_click}";
+
+        if (b1_click > b2_click && b1_click > b3_click)
+        {
+           labelMain.Text = "Button 1 had the most clicks!!!!";
+        }
+        else if (b2_click > b1_click && b2_click > b3_click)
+        {
+           labelMain.Text = "Button 2 had the most clicks!!!!";
+        }
+        else if (b3_click > b1_click && b3_click > b2_click)
+        {
+           labelMain.Text = "Button 3 had the most clicks!!!!";
+        }
+
+        else
+        { 
+           labelMain.Text = "There was a tie!!!!";
+        }
+
+        //add refresh button/function
+    }
+
+    protected void Reset_All(object sender, EventArgs e)
+    {
+        b1_click = 0;
+        b2_click = 0;
+        b3_click = 0;
+
+        label1.Text = "???";
+        label2.Text = "???";
+        label3.Text = "???";
+        labelMain.Text = "This keeps track of how many times each button was pressed";
+    }
+
+    
+}
