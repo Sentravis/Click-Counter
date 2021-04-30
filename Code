@@ -4,7 +4,7 @@ using Mod9_HW;
 
 public partial class MainWindow : Gtk.Window
 {
-    
+    //setting 3 counters for the buttons
     int b1_click = 0;
     int b2_click = 0;
     int b3_click = 0;
@@ -20,6 +20,7 @@ public partial class MainWindow : Gtk.Window
         a.RetVal = true;
     }
 
+    // 3 button click methods, adding +1 to the corresponding button counters
     protected void B1_Clicked(object sender, EventArgs e)
     {
 
@@ -36,6 +37,9 @@ public partial class MainWindow : Gtk.Window
         b3_click++;
     }
 
+
+    // attached to the "See Results" button
+    // tells the most clicked button as well as how many times each button was pressed
     protected void MostClicks(object sender, EventArgs e)
     {
         this.label1.Text = $"{b1_click}";
@@ -60,9 +64,11 @@ public partial class MainWindow : Gtk.Window
            labelMain.Text = "There was a tie!!!!";
         }
 
-        //add refresh button/function
+     
     }
 
+    // attached to the "Reset" button
+    // resets all settings back to default
     protected void Reset_All(object sender, EventArgs e)
     {
         b1_click = 0;
